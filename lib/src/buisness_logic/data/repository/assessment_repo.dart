@@ -17,7 +17,7 @@ class AssessmentRepo_impl implements AssessmentRepo {
     'Content-Type': 'application/json',
   };
   Future<ApiResponse<AssessmentData>> login(String aId,String usn) async {
-    final uri = Uri.http(assessment_MS, 'loginInfo/${aId}/${usn}');
+    final uri = Uri.https(assessment_MS, '/loginInfo/${aId}/${usn}');
     ('aid  : ${aId} usn: ${usn}');
     http.Response resp = await http.get(uri);
     try {
@@ -42,7 +42,7 @@ class AssessmentRepo_impl implements AssessmentRepo {
   Future<ApiResponse<bool>> markAnswer(String aId,String usn, int index, int answer) async {
     ('Marking Answer');
     Map<String,String> params = {"q": index.toString(), "a": answer.toString()};
-    final uri = Uri.http(assessment_MS, '/markAnswer/${aId}/${usn}',params);
+    final uri = Uri.https(assessment_MS, '/markAnswer/${aId}/${usn}',params);
     (uri);
     http.Response resp = await http.get(uri);
     try {
@@ -59,7 +59,7 @@ class AssessmentRepo_impl implements AssessmentRepo {
   }
 
   Future<ApiResponse<bool>> submit(String aId,String usn) async {
-    final uri = Uri.http(assessment_MS, '/submit/${aId}/${usn}');
+    final uri = Uri.https(assessment_MS, '/submit/${aId}/${usn}');
     http.Response resp = await http.get(uri);
     try {
       if (resp.statusCode == 200) {

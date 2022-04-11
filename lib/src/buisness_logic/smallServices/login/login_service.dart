@@ -9,7 +9,7 @@ class LoginService{
     'Content-Type': 'application/json',
   };
     Future<ApiResponse<LoginData>> login(String aid,String uid,String password) async {
-      Uri url = Uri.http(assessment_MS, '/user/login');
+      Uri url = Uri.https(assessment_MS, '/user/login');
       var body = {
         'a_id':aid,
         'u_id':uid,
